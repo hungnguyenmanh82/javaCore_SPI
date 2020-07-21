@@ -18,7 +18,8 @@
 	<build>
 		<finalName>com-hung-service-api</finalName>
 		<plugins>
-			<plugin>
+		<!-- child Project sẽ thừa kế từ Pom.xml của Parent Project -->
+<!-- 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
@@ -26,7 +27,7 @@
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
-			</plugin>
+			</plugin> -->
 			
 			<!-- include all lib(*.jar) to output jar file -->
 			<plugin>

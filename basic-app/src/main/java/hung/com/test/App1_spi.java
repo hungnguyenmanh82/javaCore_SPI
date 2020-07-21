@@ -12,7 +12,7 @@ public class App1_spi {
 	public static void main(String[] args) throws Exception {
 
 			/**
-			 *  use Java Reflection to load all implementations of API
+			 *  use Java Reflection to load all implementations of API => must add *.jar to ClassPath at runtime
 			 *  factory pattern to create object (new implementationClass )
 			 */
 		    ServiceLoader<IAccount> serviceLoader = ServiceLoader.load(IAccount.class); 

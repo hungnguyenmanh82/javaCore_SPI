@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>hung.com.spi</groupId>
@@ -6,13 +7,38 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
 	<!-- Cac Project liet ke o day se dc compile theo order -->
-	<!-- Cac Module o day la cac project chay doc lap -->
-	<modules>	
+	<!-- Cac Module o day la cac child project chay doc lap -->
+	<!-- child Project sẽ thừa kế từ Pom.xml của Parent Project -->
+	<modules>
 		<module>./com-hung-service-api</module>
 		<module>./com-hung-service-impl1</module>
 		<module>./com-hung-service-impl2</module>
 		<module>./basic-app</module>
 	</modules>
+
+	<!-- child Project sẽ thừa kế từ Pom.xml của Parent Project -->
+	<build>
+		<!-- tạo file *.jar ko include lib vào -->
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<release>11</release>
+
+					<!-- Eclipse use it -->
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
 
 </project>
