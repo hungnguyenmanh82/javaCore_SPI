@@ -7,7 +7,7 @@
 
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	
+
 	<!-- child Project sẽ thừa kế từ Pom.xml của Parent Project -->
 	<parent>
 		<groupId>hung.com.spi</groupId>
@@ -20,22 +20,19 @@
 			<groupId>hung.com.spi</groupId>
 			<artifactId>com-hung-service-api</artifactId>
 			<version>1.0-SNAPSHOT</version>
+			<!-- exclude from Maven Compiler and Maven-Shade-Plugin -->
+			<!-- sẽ cung cấp ở runtime in classpath -->
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<finalName>com-hung-service-impl2</finalName>
 		<plugins>
-		<!-- child Project sẽ thừa kế từ Pom.xml của Parent Project -->
-<!-- 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin> -->
+			<!-- child Project sẽ thừa kế từ Pom.xml của Parent Project -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
+				<version>3.7.0</version> <configuration> <source>1.8</source> <target>1.8</target> 
+				</configuration> </plugin> -->
 
 			<!-- include all lib(*.jar) to output jar file -->
 			<plugin>

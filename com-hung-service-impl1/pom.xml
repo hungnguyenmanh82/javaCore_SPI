@@ -21,6 +21,9 @@
 			<groupId>hung.com.spi</groupId>
 			<artifactId>com-hung-service-api</artifactId>
 			<version>1.0-SNAPSHOT</version>
+			<!-- exclude from Maven Compiler and Maven-Shade-Plugin  -->
+			<!-- sẽ cung cấp ở runtime in classpath -->
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
