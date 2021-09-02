@@ -21,8 +21,12 @@ public class App1_spi {
 			 */
 		    ServiceLoader<IAccount> serviceLoader = ServiceLoader.load(IAccount.class); 
 			
-			// Nhược điểm của SPI là nó chỉ load instant là singleton
-		    // iterator la kieu list of new ImplementationClass
+			/**
+			 *  Nhược điểm của SPI là nó chỉ load instant là singleton
+			 *  vd: common logging log4j2, slf4j, tracer, metric
+			 *  
+			 *  JDBC có thể dùng multi instance: vì 1 app có thể kết nối tới nhiều Database khác loại cùng lúc, nhiều địa chỉ cùng loại cùng lúc
+			 */
 			Iterator<IAccount> iterator = serviceLoader.iterator();
 			
 			int i = 1;
