@@ -6,18 +6,23 @@ import java.util.ServiceLoader;
 
 import com.niaa.service.api.account.IAccount;
 
-
+/**
+ * nếu dùng SPI (Service Provider Interface): thì chỉ lấy được singleton Object của class
+ * Trong trường hợp muốn lấy nhiều Object của 1 class thì ko đc.
+ */
 public class App1_spi {
 
 	public static void main(String[] args) throws Exception {
 
 			/**
-			 *  use Java Reflection to load all implementations of API => must add *.jar to ClassPath at runtime
-			 *  factory pattern to create object (new implementationClass )
+			 *  Case1: Implement SPI *.jar phải có trong ClassPath ở runtime ( or add vào pom.xml luôn)
+			 *  
+			 *  Case2: nếu implement SPI *.jar ko có trong ClassPath thì phải dùng ClassLoad để load *.jar trc khi gọi ServiceLoader.load(IAccount.class); 
 			 */
 		    ServiceLoader<IAccount> serviceLoader = ServiceLoader.load(IAccount.class); 
 			
-			// iterator la kieu list of new ImplementationClass
+			// Nhược điểm của SPI là nó chỉ load instant là singleton
+		    // iterator la kieu list of new ImplementationClass
 			Iterator<IAccount> iterator = serviceLoader.iterator();
 			
 			int i = 1;
@@ -26,7 +31,7 @@ public class App1_spi {
 			while(iterator.hasNext()) {
 				System.out.println("======== implementation class: "+ i);
 				IAccount next = iterator.next();
-				System.out.println("AccountType: "+ next.getAccountType());
+				System.out.println("AccountType: "+ next.getAccountType());  //đã khởi tạo Object, ko còn là class nữa
 				System.out.println("AccountId: "+ next.getAccountId());
 				
 			}
